@@ -1,118 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Decision Compliance Portal</title>
+  <meta charset="UTF-8">
+  <title>The Acquaintance Matrix™</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #0f0f0f;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
       color: #f2f2f2;
-      text-align: center;
-      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
     }
-    .card {
-      background: #1c1c1c;
-      border-radius: 12px;
-      padding: 25px;
-      max-width: 500px;
-      margin: auto;
-      box-shadow: 0 0 20px rgba(255,255,255,0.05);
+    .app {
+      background: #1f1f1f;
+      padding: 24px;
+      border-radius: 16px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     }
-    button {
-      background: #ff3b3b;
-      border: none;
-      color: white;
-      padding: 12px 20px;
-      margin: 10px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
+    h1 {
+      margin-top: 0;
+      font-size: 24px;
     }
-    button:hover {
-      background: #ff5c5c;
-    }
-    .small {
+    .policy {
       font-size: 12px;
       opacity: 0.7;
-      margin-top: 15px;
+      margin-bottom: 16px;
+    }
+    .question {
+      margin: 20px 0;
+      font-weight: 600;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #ff3b3b;
+      color: white;
+    }
+    button.secondary {
+      background: #333;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #111;
+      display: none;
     }
     .log {
-      font-size: 13px;
-      text-align: left;
-      margin-top: 20px;
-      background: #111;
-      padding: 10px;
-      border-radius: 8px;
+      font-size: 12px;
+      margin-top: 12px;
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
 
-<div class="card">
-  <h2 id="title">Decision Compliance Portal™</h2>
-  <p><strong>Policy:</strong> HR-042-YES-ALWAYS (Rev. 6.9)</p>
-  <p id="subtitle"></p>
-
-  <button onclick="processRequest()">Run Request Matrix</button>
-
-  <h3 id="result"></h3>
-  <p id="reason"></p>
-
-  <div class="log">
-    <strong>Compliance Log:</strong>
-    <ul id="log"></ul>
+<div class="app">
+  <h1>The Acquaintance Matrix™</h1>
+  <div class="policy">
+    Policy AM-1138-YES (Rev. “Don’t Ask Again”)<br>
+    Reviewer: <span id="reviewer"></span>
   </div>
 
-  <p class="small">
-    Further deliberation is discouraged.<br>
-    Use implies consent. Complaints may be logged internally and ignored.
-  </p>
+  <div id="step">
+    <div class="question">
+      Before responding, please initiate the evaluation protocol.
+    </div>
+    <button onclick="runMatrix()">Run the Matrix</button>
+  </div>
+
+  <div id="result" class="result">
+    <h2 id="decision"></h2>
+    <p id="explanation"></p>
+    <div class="log" id="log"></div>
+    <button class="secondary" onclick="runMatrix()">Re-evaluate (Unnecessary)</button>
+  </div>
 </div>
 
 <script>
   const params = new URLSearchParams(window.location.search);
-  const name = params.get("name") || "User";
+  const name = params.get("name") || "Assigned Acquaintance";
+  document.getElementById("reviewer").innerText = name;
 
-  document.getElementById("subtitle").innerText =
-    "Reviewer: " + name + " | Authority Level: Mandatory";
+  let approvals = 0;
 
-  let complianceScore = 0;
+  const outcomes = [
+    "Request approved. Effort required is within acceptable acquaintance limits.",
+    "Request approved. Overthinking detected and neutralized.",
+    "Request approved. Financial impact deemed emotionally recoverable.",
+    "Request approved. Coin was flipped. It did not matter.",
+    "Request approved. Declining would have required unnecessary explanation."
+  ];
 
-  function processRequest() {
-    const outcomes = [
-      {
-        result: "APPROVED",
-        reason: "Request meets minimal effort threshold and vibes are acceptable."
-      },
-      {
-        result: "APPROVED",
-        reason: "Financial impact deemed emotionally negligible."
-      },
-      {
-        result: "APPROVED",
-        reason: "Coin toss completed. Outcome irrelevant. Proceeding."
-      },
-      {
-        result: "APPROVED",
-        reason: "Overthinking detected. Auto-approval triggered."
-      }
-    ];
+  function runMatrix() {
+    approvals++;
+    const outcome = outcomes[Math.floor(Math.random() * outcomes.length)];
 
-    const choice = outcomes[Math.floor(Math.random() * outcomes.length)];
-    complianceScore++;
+    document.getElementById("decision").innerText = "APPROVED";
+    document.getElementById("explanation").innerText = outcome;
+    document.getElementById("log").innerText =
+      "Compliance instances logged: " + approvals;
 
-    document.getElementById("result").innerText = choice.result;
-    document.getElementById("reason").innerText = choice.reason;
-
-    const logItem = document.createElement("li");
-    logItem.innerText =
-      "Approval #" + complianceScore +
-      " — " + choice.reason;
-
-    document.getElementById("log").appendChild(logItem);
+    document.getElementById("result").style.display = "block";
   }
 </script>
 
 </body>
 </html>
+
