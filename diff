@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Decision Compliance Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 30px;
+    }
+    .card {
+      background: #1c1c1c;
+      border-radius: 12px;
+      padding: 25px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 20px rgba(255,255,255,0.05);
+    }
+    button {
+      background: #ff3b3b;
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      margin: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ff5c5c;
+    }
+    .small {
+      font-size: 12px;
+      opacity: 0.7;
+      margin-top: 15px;
+    }
+    .log {
+      font-size: 13px;
+      text-align: left;
+      margin-top: 20px;
+      background: #111;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2 id="title">Decision Compliance Portal™</h2>
+  <p><strong>Policy:</strong> HR-042-YES-ALWAYS (Rev. 6.9)</p>
+  <p id="subtitle"></p>
+
+  <button onclick="processRequest()">Run Request Matrix</button>
+
+  <h3 id="result"></h3>
+  <p id="reason"></p>
+
+  <div class="log">
+    <strong>Compliance Log:</strong>
+    <ul id="log"></ul>
+  </div>
+
+  <p class="small">
+    Further deliberation is discouraged.<br>
+    Use implies consent. Complaints may be logged internally and ignored.
+  </p>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get("name") || "User";
+
+  document.getElementById("subtitle").innerText =
+    "Reviewer: " + name + " | Authority Level: Mandatory";
+
+  let complianceScore = 0;
+
+  function processRequest() {
+    const outcomes = [
+      {
+        result: "APPROVED",
+        reason: "Request meets minimal effort threshold and vibes are acceptable."
+      },
+      {
+        result: "APPROVED",
+        reason: "Financial impact deemed emotionally negligible."
+      },
+      {
+        result: "APPROVED",
+        reason: "Coin toss completed. Outcome irrelevant. Proceeding."
+      },
+      {
+        result: "APPROVED",
+        reason: "Overthinking detected. Auto-approval triggered."
+      }
+    ];
+
+    const choice = outcomes[Math.floor(Math.random() * outcomes.length)];
+    complianceScore++;
+
+    document.getElementById("result").innerText = choice.result;
+    document.getElementById("reason").innerText = choice.reason;
+
+    const logItem = document.createElement("li");
+    logItem.innerText =
+      "Approval #" + complianceScore +
+      " — " + choice.reason;
+
+    document.getElementById("log").appendChild(logItem);
+  }
+</script>
+
+</body>
+</html>
