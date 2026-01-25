@@ -174,10 +174,10 @@
        </div>
        <div>
         <div id="player-name" class="terminal-text text-green-300 font-semibold">
-         Player
+         Mr. James
         </div>
         <div class="text-green-500/60 text-xs">
-         CLEARANCE: LEVEL 5
+         CLEARANCE: LEGENDARY 🌟
         </div>
        </div>
       </div>
@@ -211,7 +211,7 @@
        🎮
       </div>
       <div id="question-text" class="terminal-text text-xl md:text-2xl text-green-100 font-semibold leading-relaxed">
-       Ready to enter the Decision Matrix?
+       Am I ready to enter the Decision Matrix? Let's find out! 🚀
       </div>
      </div><!-- Note -->
      <div id="note-container" class="hidden mb-6 p-3 rounded-lg bg-green-900/20 border-l-4 border-green-500">
@@ -240,9 +240,37 @@
    </div>
   </div>
   <script>
+    // Sound effects
+    const sounds = {
+      click: () => {
+        const audio = new Audio();
+        audio.volume = 0.3;
+        audio.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBE2d4PK7YxIESKHk8rhjEgRJoeTyu2ISBEih5PKyYRQETZ3g8rljEwRMneDyu2ISBEig5PKxYRUEWKvn8rJjEgRLn+Hyt2MSBEqe4fK7YxUEPpzg8rtjEgRKnuHysGEVBECb4fK3YxIEQZ3h8rdjEwREn+Pyu2MVBDCZ3vK4YxQESqDj8rtjFARNo+TyvmMVBCuW3PK+YxQES5/j8rtjEgRGnuHyt2MVBEOf5PKxYhYEMJne8sFjFQQ6muDyvmMWBCqV3PK9YxQETKHk8r1jFgQlktryv2MWBDSa3vLAYxcEKJPa8sBjFgQuk93ywGMXBCeS2vLBYxYELJPd8sBjFwQnktryv2MWBCyT3fK/YxYELZTe8sFjFgQpk9vywWMWBC2T3vLAYxcEJpLb8sFjFgQuk93yv2MXBCaS2/K+YxYELpPd8sJjFwQlktvywWMWBC6T3fK+YxYELpPd8sBjFwQmktv=';
+        audio.play().catch(() => {});
+      },
+      success: () => {
+        const audio = new Audio();
+        audio.volume = 0.4;
+        audio.src = 'data:audio/wav;base64,UklGRhIEAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0Ya4DAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBE2d4PK7YxIESKHk8rhjEgRJoeTyu2ISBEih5PKyYRQETZ3g8rljEwRMneDyu2ISBEig5PKxYRUEWKvn8rJjEgRLn+Hyt2MSBEqe4fK7YxUEPpzg8rtjEgRKnuHysGEVBECb4fK3YxIEQZ3h8rdjEwREn+Pyu2MVBDCZ3vK4YxQESqDj8rtjFARNo+TyvmMVBCuW3PK+YxQES5/j8rtjEgRGnuHyt2MVBEOf5PKxYhYEMJne8sFjFQQ6muDyvmMWBCqV3PK9YxQETKHk8r1jFgQlktryv2MWBDSa3vLAYxcEKJPa8sBjFgQuk93ywGMXBCeS2vLBYxYELJPd8sBjFwQnktryv2MWBCyT3fK/YxYELZTe8sFjFgQpk9vywWMWBC2T3vLAYxcEJpLb8sFjFgQuk93yv2MXBCaS2/K+YxYELpPd8sJjFwQlktvywWMWBC6T3fK+YxYELpPd8sBjFwQmktvywWMWBC2T3fLBYxYEL5Td8sBjFwQlkdvywWMWBC+U3fLAYxYEL5Te8sFjFwQmktvywWMWBC6T3fK/YxcEJpLb8sFjFgQuk93yv2MWBCuT3fLAYxcEJpLb8sBjFgQrk93yv2MXBCaS2/K+YxYELJPd8sBjFwQmktvywGMWBCyT3fK/YxYELZPe8r9jFwQmktvywGMWBC2T3vK/YxYELJPd8sBjFwQmktvywGMWBC2T3vLAYxYELJPd8sBjFwQlkdvywWMWBCyT3fLAYxYELZPe8sBjFwQnktvywGMWBCuT3fK/YxYEL5Te8sFjFwQmktvywWMWBC2T3fLBYxYEL5Td8sBjFwQmktvywWMWBC6T3fLBYxYELZPe8sBjFwQmktvywGMWBC2T3vLAYxYELZPe8sBjFwQmktvywGMWBC2T3vLAYxYELJPd8sBjFwQlkdvywWMWBCyT3fLAYxYELZPe8sBjFwQnktvywGMWBCuT3fK/YxYEL5Te8sFjFwQmktvywWMWBC2T3fLBYxYEL5Td8sBjFw==';
+        audio.play().catch(() => {});
+      },
+      flip: () => {
+        const audio = new Audio();
+        audio.volume = 0.5;
+        audio.src = 'data:audio/wav;base64,UklGRhIEAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0Ya4DAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBE2d4PK7YxIESKHk8rhjEgRJoeTyu2ISBEih5PKyYRQETZ3g8rljEwRMneDyu2ISBEig5PKxYRUEWKvn8rJjEgRLn+Hyt2MSBEqe4fK7YxUEPpzg8rtjEgRKnuHysGEVBECb4fK3YxIEQZ3h8rdjEwREn+Pyu2MVBDCZ3vK4YxQESqDj8rtjFARNo+TyvmMVBCuW3PK+YxQES5/j8rtjEgRGnuHyt2MVBEOf5PKxYhYEMJne8sFjFQQ6muDyvmMWBCqV3PK9YxQETKHk8r1jFgQlktryv2MWBDSa3vLAYxcEKJPa8sBjFgQuk93ywGMXBCeS2vLBYxYELJPd8sBjFwQnktryv2MWBCyT3fK/YxYELZTe8sFjFgQpk9vywWMWBC2T3vLAYxcEJpLb8sFjFgQuk93yv2MXBCaS2/K+YxYELpPd8sJjFwQlktvywWMWBC6T3fK+YxYELpPd8sBjFwQmktvywWMWBC2T3fLBYxYEL5Td8sBjFwQlkdvywWMWBC+U3fLAYxYEL5Te8sFjFwQmktvywWMWBC6T3fK/YxcEJpLb8sFjFgQuk93yv2MWBCuT3fLAYxcEJpLb8sBjFgQrk93yv2MXBCaS2/K+YxYELJPd8sBjFwQmktvywGMWBCyT3fK/YxYELZPe8r9jFwQmktvywGMWBC2T3vK/YxYELJPd8sBjFwQmktvywGMWBC2T3vLAYxYELJPd8sBjFwQlkdvywWMWBCyT3fLAYxYELZPe8sBjFwQnktvywGMWBCuT3fK/YxYEL5Te8sFjFwQmktvywWMWBC2T3fLBYxYEL5Td8sBjFwQmktvywWMWBC6T3fLBYxYELZPe8sBjFwQmktvywGMWBC2T3vLAYxYELZPe8sBjFwQmktvywGMWBC2T3vLAYxYELJPd8sBjFwQlkdvywWMWBCyT3fLAYxYELZPe8sBjFwQnktvywGMWBCuT3fK/YxYEL5Te8sFjFwQmktvywWMWBC2T3fLBYxYEL5Td8sBjFw==';
+        audio.play().catch(() => {});
+      },
+      win: () => {
+        const audio = new Audio();
+        audio.volume = 0.5;
+        audio.src = 'data:audio/wav;base64,UklGRhIEAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0Ya4DAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBE2d4PK7YxIESKHk8rhjEgRJoeTyu2ISBEih5PKyYRQETZ3g8rljEwRMneDyu2ISBEig5PKxYRUEWKvn8rJjEgRLn+Hyt2MSBEqe4fK7YxUEPpzg8rtjEgRKnuHysGEVBECb4fK3YxIEQZ3h8rdjEwREn+Pyu2MVBDCZ3vK4YxQESqDj8rtjFARNo+TyvmMVBCuW3PK+YxQES5/j8rtjEgRGnuHyt2MVBEOf5PKxYhYEMJne8sFjFQQ6muDyvmMWBCqV3PK9YxQETKHk8r1jFgQlktryv2MWBDSa3vLAYxcEKJPa8sBjFgQuk93ywGMXBCeS2vLBYxYELJPd8sBjFwQnktryv2MWBCyT3fK/YxYELZTe8sFjFgQpk9vywWMWBC2T3vLAYxcEJpLb8sFjFgQuk93yv2MXBCaS2/K+YxYELpPd8sJjFwQlktvywWMWBC6T3fK+YxYELpPd8sBjFwQmktvywWMWBC2T3fLBYxYEL5Td8sBjFwQlkdvywWMWBC+U3fLAYxYEL5Te8sFjFwQmktvywWMWBC6T3fK/YxcEJpLb8sFjFgQuk93yv2MWBCuT3fLAYxcEJpLb8sBjFgQrk93yv2MXBCaS2/K+YxYELJPd8sBjFwQmktvywGMWBCyT3fK/YxYELZPe8r9jFwQmktvywGMWBC2T3vK/YxYELJPd8sBjFwQmktvywGMWBC2T3vLAYxYELJPd8sBjFwQlkdvywWMWBCyT3fLAYxYELZPe8sBjFwQnktvywGMWBCuT3fK/YxYEL5Te8sFjFwQmktvywWMWBC2T3fLBYxYEL5Td8sBjFwQmktvywWMWBC6T3fLBYxYELZPe8sBjFwQmktvywGMWBC2T3vLAYxYELZPe8sBjFwQmktvywGMWBC2T3vLAYxYELJPd8sBjFwQlkdvywWMWBCyT3fLAYxYELZPe8sBjFwQnktvywGMWBCuT3fK/YxYEL5Te8sFjFwQmktvywWMWBC2T3fLBYxYEL5Td8sBjFw==';
+        audio.play().catch(() => {});
+      }
+    };
+
     const defaultConfig = {
       game_title: "DECISION MATRIX",
-      player_name: "Agent Mr.James",
+      player_name: "Mr. James",
       background_color: "#0a0a0a",
       primary_color: "#00ff41",
       text_color: "#e0ffe0",
@@ -254,38 +282,38 @@
 
     const steps = [
       {
-        q: "Does this request involve currency transfer?",
+        q: "Does this epic quest involve money? 💸",
         icon: "💰",
-        note: "SYSTEM: Financial implications have been noted and filed under 'acceptable losses'.",
-        buttons: ["AFFIRMATIVE", "NEGATIVE"],
+        note: "ALERT: My wallet says 'Nice try!' but the system overrides! 🎉",
+        buttons: ["HECK YES", "NOPE"],
         points: [10, 5]
       },
       {
-        q: "Calculate realistic cost impact:",
+        q: "What's the damage to MY bank account? 💳",
         icon: "📊",
-        note: "PROTOCOL: Cost analysis shows negligible impact on quarterly projections.",
-        buttons: ["$0", "< $20", "> $20"],
+        note: "ANALYSIS: I've spent more on coffee this week! ☕ Let's do this!",
+        buttons: ["$0 BABY!", "< $20", "> $20"],
         points: [15, 10, 5]
       },
       {
-        q: "Is this a simple task I can complete?",
+        q: "Can I knock this out in 5 minutes? ⚡",
         icon: "🎯",
-        note: "INSIGHT: Time spent debating exceeds task completion time by 347%.",
-        buttons: ["CONFIRMED", "UNCERTAIN"],
+        note: "REALITY CHECK: I'm literally wasting more time thinking about it! 😅",
+        buttons: ["EASY PEASY", "MAYBE?"],
         points: [20, 10]
       },
       {
-        q: "Do I possess the capability to execute?",
+        q: "Am I actually capable of doing this? 🤔",
         icon: "⚡",
-        note: "REMINDER: 'Unwillingness' and 'inability' are distinct parameters.",
-        buttons: ["CAPABLE", "THEORETICALLY"],
+        note: "PRO TIP: 'I don't wanna' ≠ 'I can't!' Let's gooooo! 🚀",
+        buttons: ["I'M A LEGEND", "PROBABLY"],
         points: [25, 15]
       },
       {
-        q: "FINAL PROTOCOL: Quantum Coin Flip",
+        q: "🎰 FINAL BOSS: The Coin of Destiny! 🎰",
         icon: "🎲",
-        note: "ENTROPY: Randomization eliminates cognitive bias and responsibility.",
-        buttons: ["ENGAGE QUANTUM FLIP"],
+        note: "WISDOM: When in doubt, let the universe decide! No regrets! 🌟",
+        buttons: ["FLIP IT!"],
         points: [0]
       }
     ];
@@ -382,12 +410,16 @@
     }
 
     function startGame() {
+      sounds.click();
       currentStep = -1;
       score = 0;
       document.getElementById('score').textContent = '0';
       document.getElementById('result-container').classList.add('hidden');
       document.getElementById('coin-container').classList.add('hidden');
-      nextStep();
+      setTimeout(() => {
+        sounds.success();
+        nextStep();
+      }, 200);
     }
 
     function nextStep() {
@@ -436,12 +468,17 @@
     }
 
     function handleChoice(idx) {
+      sounds.click();
       const step = steps[currentStep];
       updateScore(step.points[idx]);
+      setTimeout(() => {
+        sounds.success();
+      }, 100);
       nextStep();
     }
 
     function flipCoin() {
+      sounds.flip();
       stopTimer();
       document.getElementById('buttons').innerHTML = '';
       
@@ -452,6 +489,7 @@
         coin.classList.remove('coin-flip');
         const result = Math.random() > 0.5;
         updateScore(result ? 50 : 25);
+        sounds.win();
         
         document.getElementById('coin-container').classList.add('hidden');
         showFinalResult(result);
@@ -470,18 +508,18 @@
       
       if (coinResult !== undefined) {
         if (coinResult) {
-          icon = '✅';
-          text = 'REQUEST APPROVED';
-          subtitle = 'The matrix has spoken. Compliance is mandatory.';
+          icon = '🎉';
+          text = 'I\'M DOING IT!';
+          subtitle = 'The coin of destiny says YES! Let\'s goooo! 🚀';
         } else {
-          icon = '⏳';
-          text = 'REQUEST PENDING';
-          subtitle = 'Resubmit in 24 hours for quantum recalculation.';
+          icon = '😅';
+          text = 'MAYBE LATER!';
+          subtitle = 'The universe says "Nah, try again tomorrow!" 🌙';
         }
       } else {
         icon = '🏆';
-        text = 'EVALUATION COMPLETE';
-        subtitle = `Final Score: ${score} neural points`;
+        text = 'MISSION COMPLETE!';
+        subtitle = `I scored ${score} EPIC points! 🔥`;
       }
       
       document.getElementById('result-icon').textContent = icon;
@@ -569,5 +607,5 @@
 
     initApp();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c3766f6929566d1',t:'MTc2OTM0MDI0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c3782060163e93e',t:'MTc2OTM0MTM1NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
