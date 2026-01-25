@@ -211,7 +211,7 @@
        🎮
       </div>
       <div id="question-text" class="terminal-text text-xl md:text-2xl text-green-100 font-semibold leading-relaxed">
-       Am I ready to enter the Decision Matrix? Let's find out! 🚀
+       Ready to process this request? The answer is yes, but let's pretend there's a choice. 😏
       </div>
      </div><!-- Note -->
      <div id="note-container" class="hidden mb-6 p-3 rounded-lg bg-green-900/20 border-l-4 border-green-500">
@@ -282,38 +282,38 @@
 
     const steps = [
       {
-        q: "Does this epic quest involve money? 💸",
+        q: "Does this request involve currency transfer? 💸",
         icon: "💰",
-        note: "ALERT: My wallet says 'Nice try!' but the system overrides! 🎉",
-        buttons: ["HECK YES", "NOPE"],
+        note: "SYSTEM NOTE: Financial implications detected. But honestly? It's probably worth it. 😏",
+        buttons: ["Obviously", "Not Really"],
         points: [10, 5]
       },
       {
-        q: "What's the damage to MY bank account? 💳",
+        q: "Calculate realistic cost impact to MY budget: 💳",
         icon: "📊",
-        note: "ANALYSIS: I've spent more on coffee this week! ☕ Let's do this!",
-        buttons: ["$0 BABY!", "< $20", "> $20"],
+        note: "ANALYSIS: The real cost is saying no and dealing with the guilt. Much cheaper to just do it. 🙄",
+        buttons: ["$0", "< $20", "> $20"],
         points: [15, 10, 5]
       },
       {
-        q: "Can I knock this out in 5 minutes? ⚡",
+        q: "Is this a simple task I can handle quickly? ⚡",
         icon: "🎯",
-        note: "REALITY CHECK: I'm literally wasting more time thinking about it! 😅",
-        buttons: ["EASY PEASY", "MAYBE?"],
+        note: "INSIGHT: I've already wasted 10 minutes debating this. Classic. 💅",
+        buttons: ["Absolutely", "Probably"],
         points: [20, 10]
       },
       {
-        q: "Am I actually capable of doing this? 🤔",
+        q: "Do I possess the capability to execute this? 🤔",
         icon: "⚡",
-        note: "PRO TIP: 'I don't wanna' ≠ 'I can't!' Let's gooooo! 🚀",
-        buttons: ["I'M A LEGEND", "PROBABLY"],
+        note: "REMINDER: There's a difference between 'I can't' and 'I don't feel like it.' Spoiler: It's the latter. 😌",
+        buttons: ["Of Course", "Technically Yes"],
         points: [25, 15]
       },
       {
-        q: "🎰 FINAL BOSS: The Coin of Destiny! 🎰",
+        q: "🎲 FINAL PROTOCOL: Quantum Decision Flip 🎲",
         icon: "🎲",
-        note: "WISDOM: When in doubt, let the universe decide! No regrets! 🌟",
-        buttons: ["FLIP IT!"],
+        note: "VERDICT: The universe knows what's up. Let's be real though—I'm doing it either way. 💁",
+        buttons: ["Engage Flip"],
         points: [0]
       }
     ];
@@ -508,18 +508,18 @@
       
       if (coinResult !== undefined) {
         if (coinResult) {
-          icon = '🎉';
-          text = 'I\'M DOING IT!';
-          subtitle = 'The coin of destiny says YES! Let\'s goooo! 🚀';
+          icon = '✅';
+          text = 'DOING IT.';
+          subtitle = 'The coin has spoken. Obviously I was going to anyway. 😏';
         } else {
-          icon = '😅';
-          text = 'MAYBE LATER!';
-          subtitle = 'The universe says "Nah, try again tomorrow!" 🌙';
+          icon = '✅';
+          text = 'DOING IT ANYWAY.';
+          subtitle = 'Plot twist: The coin doesn\'t actually matter. Already committed. 💁';
         }
       } else {
         icon = '🏆';
-        text = 'MISSION COMPLETE!';
-        subtitle = `I scored ${score} EPIC points! 🔥`;
+        text = 'DECISION PROCESSED';
+        subtitle = `Final Score: ${score} points. The outcome was never in doubt. 😌`;
       }
       
       document.getElementById('result-icon').textContent = icon;
@@ -607,5 +607,5 @@
 
     initApp();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c3782060163e93e',t:'MTc2OTM0MTM1NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c378de8c1544749',t:'MTc2OTM0MTg0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
